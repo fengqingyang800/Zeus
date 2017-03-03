@@ -28,3 +28,85 @@ const template = {
 }
 
 export default template;
+
+
+getElementById(id) {
+    let html = '';
+
+    switch(id) {
+        case 'pulldown':
+            switch(this.state.pullDownStatus) {
+                case 0:
+                    html = <div className="jg-listview-pull-wrap"><span>{'下拉刷新'}</span></div>;
+                    break;
+                case 1:
+                    html = (<div className="jg-listview-pull-wrap">
+                        <div className="jg-listview-icon">
+                            <LoadingIcon iconSize={28} />
+                        </div>
+                        <span className="jg-listview-text">{'继续下拉刷新'}</span>
+                    </div>);
+                    break;
+                case 2:
+                    html = (<div className="jg-listview-pull-wrap">
+                        <div className="jg-listview-icon">
+                            <LoadingIcon iconSize={28} />
+                        </div>
+                        <span className="jg-listview-text">{'松手即可刷新'}</span>
+                    </div>);
+                    break;
+                case 3:
+                    html = (<div className="jg-listview-pull-wrap">
+                        <div className="jg-listview-icon">
+                            <LoadingIcon iconSize={28} />
+                        </div>
+                        <span className="jg-listview-text">{'刷新中...'}</span>
+                    </div>);
+                    break;
+                case 4:
+                    html = <div className="jg-listview-pull-wrap"><span>{'刷新成功'}</span></div>;
+                    break;
+                case 5:
+                    html = <div className="jg-listview-pull-wrap"><span>{'刷新失败'}</span></div>;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 'pullup':
+            switch(this.state.pullUpStatus) {
+                case 0:
+                    html = <div className="jg-listview-pull-wrap"><span>{'上拉加载更多'}</span></div>;
+                    break;
+                case 1:
+                    html = (<div className="jg-listview-pull-wrap">
+                        <div className="jg-listview-icon">
+                            <LoadingIcon iconSize={28} />
+                        </div>
+                        <span className="jg-listview-text">{'松手即可加载更多'}</span>
+                    </div>);
+                    break;
+                case 2:
+                    html = (<div className="jg-listview-pull-wrap">
+                        <div className="jg-listview-icon">
+                            <LoadingIcon iconSize={28} />
+                        </div>
+                        <span className="jg-listview-text">{'加载中...'}</span>
+                    </div>);
+                    break;
+                case 3:
+                    html = <div className="jg-listview-pull-wrap"><span>{'加载成功'}</span></div>;
+                    break;
+                case 4:
+                    html = <div className="jg-listview-pull-wrap"><span>{'加载失败'}</span></div>;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
+
+    return html;
+}

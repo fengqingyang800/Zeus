@@ -98,14 +98,14 @@ class ListView extends Component {
         this.isIphone = /iphone/gi.test(navigator.appVersion);
     }
 
-    componentDidMount(props) {
+    componentDidMount() {
 
         // 记录上拉加载、下拉刷子滑块的高度
         this.pullRefreshElHeight = this.pullRefreshEl ? this.pullRefreshEl.offsetHeight : 0;
         this.loadMoreElHeight = this.loadMoreEl ? this.loadMoreEl.offsetHeight : 0;
-
+        const props = this.props;
         // 初始化IScroll对象
-        const iscrollIns = this.IScroll = new IScroll({
+        const iscrollIns = this.IScroll = new IScroll(ReactDOM.findDOMNode(this), {
             useTransform: props.useTransform,
             useTransition: props.useTransition,
             HWCompositing: props.HWCompositing,
@@ -243,7 +243,7 @@ class ListView extends Component {
     }
 
     render() {
-        {
+        const {
             usePullRefresh,
             pullRefreshStatus,
             useLoadMore,

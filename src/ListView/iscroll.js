@@ -11,7 +11,7 @@ export default class IScroll {
         // 容器DOM
         this.wrapper = typeof el === 'string' ? document.querySelector(el) : el;
         // 滑块DOM
-        this.scroller = this.wrapper.childeren[0];
+        this.scroller = this.wrapper.children[0];
         // 缓存滑块样式，提高效率
         this.scrollerStyle = this.scroller.style;
 
@@ -184,9 +184,9 @@ export default class IScroll {
     /**
      * 设置tarnsition动效函数
      * */
-    _transitionTimingFunction: function (easing) {
+    _transitionTimingFunction (easing) {
         this.scrollerStyle[utils.style.transitionTimingFunction] = easing;
-    },
+    }
 
     /**
      * 动画函数
@@ -659,7 +659,7 @@ export default class IScroll {
         y = this.y + y;
 
         this.scrollTo(x, y, time, easing);
-    },
+    }
 
     /**
      * 以元素为基准进行位移

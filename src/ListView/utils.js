@@ -145,6 +145,8 @@ function momentum(current, start, time, lowerMargin, wrapperSize, deceleration) 
     };
 }
 
+const getTime = Date.now || (() => new Date().getTime());
+
 /**
  * 计算偏移
  * */
@@ -207,9 +209,6 @@ function click(e) {
         target.dispatchEvent(ev);
     }
 };
-
-return me;
-}
 
 const style = {
     transform: _transform,
@@ -282,6 +281,9 @@ const utils = {
     hasTouch: 'ontouchstart' in window,
     hasTransition: _prefixStyle('transition') in _elementStyle,
     prefixStyle: _prefixStyle,
+    addEvent,
+    removeEvent,
+    getTime,
     style,
     isBadAndroid,
     offset,
@@ -293,4 +295,4 @@ const utils = {
     requestAnimationFrame
 }
 
-export default utils;
+module.exports = utils;
